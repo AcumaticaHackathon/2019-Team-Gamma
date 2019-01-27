@@ -28,7 +28,7 @@ namespace PowerTabs
   public class PTGraphExt : PXGraphExtension<PXGraph>
   {
         //public PXSetup<PX.Objects.GL.GLSetup> GLSetup;
-        public PXSetup<PTSource> PowerTabSource;
+        public PXFilter<PTSource> PowerTabSource;
 
         public virtual string GetParam(string paramName, string sourceFieldName)
         {

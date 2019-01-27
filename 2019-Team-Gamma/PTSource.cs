@@ -4,7 +4,7 @@ using PX.Data.Maintenance.GI;
 
 namespace PowerTabs
 {
-	[Serializable]
+
 	public class PTSource : IBqlTable
 	{
         [PXString]
