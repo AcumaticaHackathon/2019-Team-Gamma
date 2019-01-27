@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using PX.Data;
 using PX.Data.Maintenance.GI;
+using PX.Objects.Common.Extensions;
 
 namespace PowerTabs
 {
@@ -59,10 +62,44 @@ namespace PowerTabs
 					{
 						line.ParamDisplayName = param.Name;
 					}
-					                        
-					MappingLines.Update(line);
+
+					line = MappingLines.Update(line);
+					SetFieldNameList(MappingLines.Cache, line);
 				}
 			}
+		}
+
+		protected virtual void _(Events.RowSelecting<GIMappingLine> e)
+		{
+			if (e.Row == null) return;
+			if (!String.IsNullOrEmpty(Mapping.Current.ScreenID))
+			{
+				SetFieldNameList(e.Cache, e.Row);
+			}
+		}
+
+		private void SetFieldNameList(PXCache cache, GIMappingLine row)
+		{
+//			Tuple<string, string>[] valuesArr = null;
+			string[] valuesArr = null;
+			var a = Assembly.Load("PX.Objects");
+			Type graphType = a.GetType(Mapping.Current.GraphTypeName);
+			if (graphType != null)
+			{
+				PXGraph graph = PXGraph.CreateInstance(graphType);
+				string tst = graph.PrimaryView;
+				var fields = graph.Views[graph.PrimaryView].Cache.Fields;
+				List<string> valuesList = new List<string>();
+				string tanleName = graph.Views[graph.PrimaryView].Cache.BqlTable.Name;
+				foreach (var field in fields)
+				{
+					string name = tanleName + '.' + field;
+					valuesList.Add(name);
+				}
+				valuesArr = valuesList.ToArray();
+			}
+
+			PXStringListAttribute.SetList<GIMappingLine.fieldName>(cache, row, valuesArr, valuesArr);
 		}
 
 
