@@ -69,7 +69,7 @@ namespace PowerTabs
 			}
 		}
 
-		protected virtual void _(Events.RowSelecting<GIMappingLine> e)
+		protected virtual void _(Events.RowSelected<GIMappingLine> e)
 		{
 			if (e.Row == null) return;
 			if (!String.IsNullOrEmpty(Mapping.Current.ScreenID))

@@ -25,7 +25,7 @@
 			<px:PXGridLevel DataMember="MappingLines">
 			    <Columns>
 				<px:PXGridColumn DataField="ParamDisplayName" Width="280" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="FieldName" Width="280" ></px:PXGridColumn></Columns>
+				<px:PXGridColumn CommitChanges="True" DataField="FieldName" Width="280" MatrixMode="True"></px:PXGridColumn></Columns>
 			</px:PXGridLevel>
 		</Levels>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
