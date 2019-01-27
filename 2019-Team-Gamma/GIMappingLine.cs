@@ -48,7 +48,7 @@ namespace PowerTabs
 		/// <exclude/>
 		public abstract class paramDisplayName : IBqlField { }
 		[PXDBString(512, InputMask = "", IsUnicode = true)]
-		[PXUIField(DisplayName = "Parameter Display Name")]
+		[PXUIField(DisplayName = "Parameter Display Name", Enabled = false)]
 		public string ParamDisplayName { get; set; }
 		#endregion
 
