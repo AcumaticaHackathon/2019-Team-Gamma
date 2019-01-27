@@ -1,5 +1,4 @@
-﻿<Graph ClassName="CustomerMaint" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
-    <CDATA name="Source"><![CDATA[using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,5 +27,4 @@ namespace PX.Objects.AR
   {
   
   }
-}]]></CDATA>
-</Graph>
+}

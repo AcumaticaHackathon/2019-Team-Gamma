@@ -1,5 +1,4 @@
-﻿<Graph ClassName="BAccountExtensions" Source="#CDATA" IsNew="True" FileType="NewFile">
-    <CDATA name="Source"><![CDATA[using PX.Data.EP;
+using PX.Data.EP;
 using PX.Data.ReferentialIntegrity.Attributes;
 using PX.Data;
 using PX.Objects.AP;
@@ -44,5 +43,4 @@ namespace PX.Objects.CR
   
     #endregion
   }
-}]]></CDATA>
-</Graph>
+}
