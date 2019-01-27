@@ -1,0 +1,11 @@
+﻿<Sql TableName="GIMappingPreset" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="GIMappingPreset">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ScreenID" type="VarChar(8)" />
+  <col name="GraphTypeName" type="VarChar(255)" nullable="true" />
+  <index name="GIMappingPreset_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ScreenID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

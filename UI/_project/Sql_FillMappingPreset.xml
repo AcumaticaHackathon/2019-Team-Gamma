@@ -1,0 +1,1 @@
+﻿<Sql TableName="FillMappingPreset" SqlScriptPriority="100" CustomScript="insert into [GIMappingPreset] values (2 , 'AR303000', 'PX.Objects.AR.CustomerMaint')" />

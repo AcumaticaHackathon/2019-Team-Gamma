@@ -9,7 +9,6 @@ namespace PowerTabs
 	  public PXSelect<GIMappingLine, 
 		  Where<GIMappingLine.screenID, Equal<Current<GIMapping.screenID>>, 
 			  And<GIMappingLine.designID, Equal<Current<GIMapping.designID>>>>> MappingLines;
-	  
 
 	  #region Event Handlers
 
