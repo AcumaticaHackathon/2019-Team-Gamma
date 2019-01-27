@@ -28,19 +28,38 @@
     <PXFormView ID="BAccount" ParentId="phF_BAccount" TypeFullName="PX.Web.UI.PXFormView">
         <Children Key="Template">
             <AddItem>
-                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                <PXFormView TypeFullName="PX.Web.UI.PXFormView">
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="DataField" Value="UsrPowerTabUrl" />
-                    <Prop Key="ID" Value="usrPowerTabUrl" />
-                </PXTextEdit>
-            </AddItem>
-            <AddItem>
-                <PXJavaScript TypeFullName="PX.Web.UI.PXJavaScript">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="PowerTabScript" />
-                    <Prop Key="IsStartupScript" Value="True" />
-                    <Prop Key="Script" Value="function updatePowerTab(ds, context) {     var commands = [&quot;ReloadPage&quot;, &quot;Save&quot;, &quot;Cancel&quot;, &quot;Insert&quot;, &quot;First&quot;, &quot;Previous&quot;, &quot;Next&quot;, &quot;Last&quot;];     if (commands.indexOf(context.command) &gt;= 0) {         var powerTabUrl = px_alls[&quot;usrPowerTabUrl&quot;];         var powerTabPanel = px_alls[&quot;powerTabPanel&quot;];         if (powerTabUrl || powerTabPanel) {             var url = powerTabUrl.getValue();             powerTabPanel.setPageUrl(url);             powerTabPanel.repaint();         }     } }" />
-                </PXJavaScript>
+                    <Prop Key="ID" Value="PowerTabSource" />
+                    <Prop Key="RenderStyle" Value="Simple" />
+                    <Prop Key="DataMember" Value="PowerTabSource" />
+                    <Children Key="Template">
+                        <AddItem>
+                            <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="ID" Value="CstPXLayoutRule5" />
+                                <Prop Key="StartColumn" Value="True" />
+                                <Children Key="Controls" />
+                            </PXLayoutRule>
+                        </AddItem>
+                        <AddItem>
+                            <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="DataField" Value="PowerTabUrl" />
+                                <Prop Key="ID" Value="usrPowerTabUrl" />
+                            </PXTextEdit>
+                        </AddItem>
+                        <AddItem>
+                            <PXJavaScript TypeFullName="PX.Web.UI.PXJavaScript">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="ID" Value="PowerTabScript" />
+                                <Prop Key="Script" Value=" function getParams(url) {     const urlHelper = document.createElement('a');     urlHelper.setAttribute('href', window.location.href);     urlHelper = {search: '?startIndex=1&amp;pageSize=10'};          var search = urlHelper.search;          if(search &amp;&amp; search.charAt(0) === '?') {       search = search.slice(1);     }          var values = urlHelper.search.split('&amp;');     var params = {};          values.forEach(function(property) {       var tup = property.split('=');       params[tup[0]] = tup[1];     });          return params; }  function updatePowerTab(ds, context) {    var Result={     CouldNotLoadUrl:1,     UrlLoadedButContentCannotBeAccessed:2,     UrlLoadedContentCanBeAccessed:3   };    var commands = [&quot;ReloadPage&quot;, &quot;Save&quot;, &quot;Cancel&quot;, &quot;Insert&quot;, &quot;First&quot;, &quot;Previous&quot;, &quot;Next&quot;, &quot;Last&quot;];   if (commands.indexOf(context.command) &gt;= 0) {       var powerTabUrl = px_alls[&quot;usrPowerTabUrl&quot;];       var powerTabPanel = px_alls[&quot;powerTabPanel&quot;];       if (powerTabUrl || powerTabPanel) {           var url = powerTabUrl.getValue();           var ifr = powerTabPanel.elemContent;            ifr.onload = function() {               var result;               try {                   var loadedUrl=(ifr.contentWindow||ifr.contentDocument).location.href;                   var doc=ifr.contentDocument;                                      var className = '';                   var type = '';                   var params = {};                    if (loadedUrl.includes('DS')) {                     className = 'ctl00_phDS_form';                     type = 'dashboard';                     params = getParams(loadedUrl);                   } else {                     className = 'phF';                     type = 'GI';                   }                   console.log(url+&quot; loaded in an iframe, it's a &quot;+type+&quot;, looking for &quot;+className);                    var elements = doc.getElementsByClassName(className);                                      if (elements &amp;&amp; elements[0]) {                     var parameterTable = elements[0];                     parameterTable.style.display = 'none';                     console.log(&quot;Got element from iframe, parameters are now hidden&quot;);                   } else {                     console.log(&quot;Couldn't find parameter table class&quot;);                   }                                      result=Result.UrlLoadedContentCanBeAccessed;               } catch(ex) {                   result=Result.UrlLoadedButContentCannotBeAccessed;                   alt=ex;                   console.log(url+' loaded in an iframe, but content is innaccessible ('+alt+')');               }           };                      powerTabPanel.setPageUrl(url);           powerTabPanel.repaint();       }   } }" />
+                                <Prop Key="IsStartupScript" Value="True" />
+                                <Children Key="Controls" />
+                            </PXJavaScript>
+                        </AddItem>
+                    </Children>
+                </PXFormView>
             </AddItem>
         </Children>
     </PXFormView>

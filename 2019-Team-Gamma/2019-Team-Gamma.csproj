@@ -57,11 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GIMapper.cs" />
+    <Compile Include="CustomerMaint.cs" />
+    <Compile Include="PTSource.cs" />
+    <Compile Include="PTGraphExt.cs" />
+    <Compile Include="GIMapping.cs" />
     <Compile Include="GIMappingLine.cs" />
     <Compile Include="GIMappingMaint.cs" />
     <Compile Include="BAccountExtensions.cs" />
-    <Compile Include="CustomerMaint.cs" />
     <Compile Include="GIMappingPreset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -17,28 +17,51 @@ using System.Diagnostics;
 using System;
 using System.Text;
 
-namespace PX.Objects.CR
+namespace PowerTabs
 {
   public class BAccountExt : PXCacheExtension<PX.Objects.CR.BAccount>
   {
     #region UsrPowerTabUrl
     [PXString]
     [PXUIField(Visible = true, DisplayName="TabUrl")]
-
     public virtual string UsrPowerTabUrl {
-      get
-      {
+      get {
         if (string.IsNullOrEmpty(Base.AcctCD)) return string.Empty;
 
-        string inqName = "InvoicedItems";
-        var url = new StringBuilder(PXGenericInqGrph.INQUIRY_URL)
-                .Append("?name=").Append(inqName)
-                .Append("&Customer=").Append(Base.AcctCD)
-                .Append("&hidePageTitle=true");
-        return PX.Common.PXUrl.SiteUrlWithPath().TrimEnd('/') + 
+        string baseUrl = "";
+        string inqName = "";
+        StringBuilder url;
+
+        string type = "GI";
+
+        if (type == "GI") {
+
+            // GI
+            baseUrl = PXGenericInqGrph.INQUIRY_URL;
+            inqName = "InvoicedItemsG";
+
+            url = new StringBuilder(baseUrl)
+                    .Append("?name=").Append(inqName)
+                    .Append("&Customer=").Append(Base.AcctCD)
+                    .Append("&hidePageTitle=true");
+
+        }
+        else {
+
+            // Dashboard
+            baseUrl = "~/Frames/Default.aspx?scrID=DB000031";
+
+            url = new StringBuilder(baseUrl)
+                    .Append("&CustomerAccountID=").Append(Base.AcctCD)
+                    .Append("&hidePageTitle=true&HideScript=On");
+
+        }
+
+        return PX.Common.PXUrl.SiteUrlWithPath().TrimEnd('/') +
                 url.ToString().Remove(0, 1);
-      }
+        }
     }
+
     public abstract class usrPowerTabUrl : IBqlField { }
   
     #endregion

@@ -21,7 +21,7 @@ using PX.Objects.GL.Helpers;
 using PX.Objects;
 using PX.Objects.AR;
 
-namespace PX.Objects.AR
+namespace PowerTabs
 {
   public class CustomerMaint_Extension : PXGraphExtension<CustomerMaint>
   {
