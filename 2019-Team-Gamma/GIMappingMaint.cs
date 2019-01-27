@@ -69,7 +69,7 @@ namespace PowerTabs
             }
         }
 
-		protected virtual void _(Events.RowSelected<GIMappingLine> e)
+		protected virtual void _(Events.FieldSelecting<GIMappingLine.fieldName> e)
 		{
 			if (e.Row == null) return;
 			if (!String.IsNullOrEmpty(Mapping.Current.ScreenID))
@@ -78,7 +78,7 @@ namespace PowerTabs
 			}
 		}
 
-		private void SetFieldNameList(PXCache cache, GIMappingLine row)
+		private void SetFieldNameList(PXCache cache, object row)
 		{
 //			Tuple<string, string>[] valuesArr = null;
 			string[] values = null;
