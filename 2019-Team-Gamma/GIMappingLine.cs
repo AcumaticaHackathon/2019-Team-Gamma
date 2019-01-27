@@ -12,10 +12,10 @@ namespace PowerTabs
 
 		[PXDBString(8, IsFixed = true, InputMask = "CC.CC.CC.CC", IsKey = true)]
 		[PXUIField(DisplayName = "Screen ID")]
-		[PXDefault(typeof(GIMapper.screenID))]
-		[PXParent(typeof(Select<GIMapper,
-			Where<GIMapper.screenID, Equal<Current<GIMappingLine.screenID>>,
-				And<GIMapper.designID, Equal<Current<GIMappingLine.designID>>>>>))]
+		[PXDefault(typeof(GIMapping.screenID))]
+		[PXParent(typeof(Select<GIMapping,
+			Where<GIMapping.screenID, Equal<Current<GIMappingLine.screenID>>,
+				And<GIMapping.designID, Equal<Current<GIMappingLine.designID>>>>>))]
 		public string ScreenID { get; set; }
 		#endregion
 
@@ -23,7 +23,7 @@ namespace PowerTabs
 		/// <exclude/>
 		public abstract class designID : IBqlField { }
 		[PXDBGuid(IsKey = true)]
-		[PXDefault(typeof(GIMapper.designID))]
+		[PXDefault(typeof(GIMapping.designID))]
 		[PXUIField(DisplayName = "GI ID")]
 		public Guid? DesignID { get; set; }
 		#endregion

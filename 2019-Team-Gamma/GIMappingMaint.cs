@@ -3,12 +3,12 @@ using PX.Data;
 
 namespace PowerTabs
 {
-  public class GIMappingMaint : PXGraph<GIMappingMaint, GIMapper>
+  public class GIMappingMaint : PXGraph<GIMappingMaint, GIMapping>
   {
-	  public PXSelect<GIMapper> Mapping;
+	  public PXSelect<GIMapping> Mapping;
 	  public PXSelect<GIMappingLine, 
-		  Where<GIMappingLine.screenID, Equal<Current<GIMapper.screenID>>, 
-			  And<GIMappingLine.designID, Equal<Current<GIMapper.designID>>>>> MappingLines;
+		  Where<GIMappingLine.screenID, Equal<Current<GIMapping.screenID>>, 
+			  And<GIMappingLine.designID, Equal<Current<GIMapping.designID>>>>> MappingLines;
 	  
 
 	  #region Event Handlers

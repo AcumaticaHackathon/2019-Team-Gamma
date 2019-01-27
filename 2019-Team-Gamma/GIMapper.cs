@@ -4,7 +4,7 @@ using PX.Data;
 namespace PowerTabs
 {
 	[Serializable]
-	public class GIMapper : IBqlTable
+	public class GIMapping : IBqlTable
 	{
 		#region ScreenID
 		/// <exclude/>
