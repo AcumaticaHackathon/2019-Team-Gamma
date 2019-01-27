@@ -114,8 +114,8 @@ namespace PowerTabs
                         Base.RowSelected.AddHandler(Base.PrimaryView, (cache, args) =>
                         {
                             if (PowerTabSource?.Current == null) PowerTabSource.Current = new PTSource();
-
-                            var giName = ((GIDesign)PXSelectorAttribute.SelectAll<GIMapping.designID>(PowerTabAssignment.Cache, PowerTabAssignment.Current).FirstOrDefault())?.Name;
+	                        PowerTabAssignment.Current = PowerTabAssignment.Select(fullName);
+							var giName = ((GIDesign)PXSelectorAttribute.SelectAll<GIMapping.designID>(PowerTabAssignment.Cache, PowerTabAssignment.Current).Find(map => ((GIDesign)map).DesignID == PowerTabAssignment.Current.DesignID))?.Name;
 
                             PowerTabSource.Current.PowerTabUrl = BuildSource("GI", giName, ptParams);
                         });
