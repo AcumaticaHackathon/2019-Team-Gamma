@@ -1,15 +1,16 @@
 using System;
 using PX.Data;
+using PX.Data.Maintenance.GI;
 
 namespace PowerTabs
 {
 	[Serializable]
-	public class GIMapper : IBqlTable
+	public class GIMapping : IBqlTable
 	{
 		#region ScreenID
 		/// <exclude/>
 		public abstract class screenID : IBqlField { }
-
+		[PXSelector(typeof(Search<GIMappingPreset.screenID>), typeof(GIMappingPreset.screenID))]
 		[PXDBString(8, IsFixed = true, InputMask = "CC.CC.CC.CC", IsKey = true)]
 		[PXUIField(DisplayName = "Screen ID")]
 		public string ScreenID { get; set; }
@@ -34,6 +35,10 @@ namespace PowerTabs
 		public abstract class designID : IBqlField { }
 		[PXDBGuid]
 		[PXDefault]
+		[PXSelector(typeof(GIDesign.designID),
+			typeof(GIDesign.name),
+			typeof(GIDesign.exposeViaOData),
+			typeof(GIDesign.sitemapSelectorTitle), SubstituteKey = typeof(GIDesign.name))]
 		[PXUIField(DisplayName = "GI ID")]
 		public Guid? DesignID { get; set; }
 		#endregion
