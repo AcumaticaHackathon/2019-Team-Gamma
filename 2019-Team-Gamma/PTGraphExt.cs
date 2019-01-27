@@ -29,6 +29,8 @@ namespace PowerTabs
   {
         //public PXSetup<PX.Objects.GL.GLSetup> GLSetup;
         public PXFilter<PTSource> PowerTabSource;
+        public PXSetup<GIMapping, Where<GIMapping.graphTypeName, Equal<Required<GIMapping.graphTypeName>>>> PowerTabAssignment;
+        public PXSetup<GIMappingLine,Where<GIMappingLine.screenID,Equal<Current<GIMapping.screenID>>>> PowerTabMapping;
 
         public virtual string GetParam(string paramName, string sourceFieldName)
         {
