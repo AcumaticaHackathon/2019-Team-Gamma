@@ -34,13 +34,17 @@ namespace PowerTabs
 
         public virtual string GetParam(string paramName, string sourceFieldName)
         {
-            var view = Base.PrimaryView;
-            if (string.IsNullOrEmpty(view) || string.IsNullOrEmpty(sourceFieldName)) return "";
+            var parts = sourceFieldName.Split('.');
+            var view = parts[0];
+            var fieldName = parts[1];
+
+            view = Base.PrimaryView;
+            if (string.IsNullOrEmpty(view) || string.IsNullOrEmpty(fieldName)) return "";
 
             var cache = Base.Views[view]?.Cache;
             if (cache == null || cache.Current == null) return "";
 
-            var sourceValue = cache.GetValue(cache.Current, sourceFieldName)?.ToString();
+            var sourceValue = cache.GetValue(cache.Current, fieldName)?.ToString();
             if (sourceValue == null) return "";
 
             var param = new StringBuilder().Append(System.Net.WebUtility.UrlEncode(paramName))
@@ -101,8 +105,8 @@ namespace PowerTabs
 
                         foreach (GIMappingLine param in paramMap)
                         {
-                            var cleanName = param.FieldName.Split('.').Last();
-                            ptParams.Add(param.ParamName, cleanName);
+                            //var cleanName = param.FieldName.Split('.').Last();
+                            ptParams.Add(param.ParamName, param.FieldName);
                         }
 
                         //PowerTabSource.Current = new PTSource();
