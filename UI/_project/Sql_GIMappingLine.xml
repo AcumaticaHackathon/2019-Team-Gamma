@@ -1,0 +1,24 @@
+﻿<Sql TableName="GIMappingLine" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="GIMappingLine">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ScreenID" type="VarChar(8)" />
+  <col name="DesignID" type="UniqueIdentifier" />
+  <col name="ParamLineNbr" type="Int" />
+  <col name="ParamName" type="VarChar(512)" nullable="true" />
+  <col name="ParamDisplayName" type="VarChar(512)" nullable="true" />
+  <col name="FieldName" type="VarChar(512)" nullable="true" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="tstamp" type="Timestamp" />
+  <index name="GIMappingLine_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ScreenID" />
+    <col name="DesignID" />
+    <col name="ParamLineNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>

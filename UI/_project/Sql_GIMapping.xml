@@ -1,0 +1,20 @@
+﻿<Sql TableName="GIMapping" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="GIMapping">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ScreenID" type="VarChar(8)" />
+  <col name="GraphTypeName" type="VarChar(255)" nullable="true" />
+  <col name="DesignID" type="UniqueIdentifier" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="tstamp" type="Timestamp" />
+  <index name="GIMapping_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ScreenID" />
+    <col name="DesignID" />
+  </index>
+</table>]]></CDATA>
+</Sql>
