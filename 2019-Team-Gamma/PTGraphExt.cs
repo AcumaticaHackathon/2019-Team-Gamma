@@ -21,14 +21,16 @@ using PX.Objects.GL.Helpers;
 using PX.Objects;
 using PX.Objects.AR;
 using System.Text;
+using PX.Data.Maintenance.GI;
 
 namespace PowerTabs
-
 {
   public class PTGraphExt : PXGraphExtension<PXGraph>
   {
         //public PXSetup<PX.Objects.GL.GLSetup> GLSetup;
         public PXFilter<PTSource> PowerTabSource;
+        public PXSetup<GIMapping, Where<GIMapping.graphTypeName, Equal<Required<GIMapping.graphTypeName>>>> PowerTabAssignment;
+        public PXSetup<GIMappingLine,Where<GIMappingLine.screenID,Equal<Current<GIMapping.screenID>>>> PowerTabMapping;
 
         public virtual string GetParam(string paramName, string sourceFieldName)
         {
@@ -80,23 +82,50 @@ namespace PowerTabs
 
         public override void Initialize()
         {
-            if (Base.GetType().Name == "CustomerMaint") {
+            try
+            {
+                var fullName = Base.GetType().Namespace + '.' + Base.GetType().Name;
 
-                var ptParams = new Dictionary<string, string>();
-                ptParams.Add("Customer", "AcctCD");
+                //if (Base.GetType().Name == "CustomerMaint") {
 
-                PowerTabSource.Current = new PTSource();
-                PowerTabSource.Current.PowerTabUrl = BuildSource("GI", "InvoicedItemsG", ptParams);
+                PowerTabAssignment.Current = PowerTabAssignment.Select(fullName);
 
-                // ptParams.Add("CustomerAccountID", "AcctCD");
-                //BuildSource("DB", "DB000031", ptParams);
-
-                Base.RowSelected.AddHandler(Base.PrimaryView, (cache, args) =>
+                if (PowerTabAssignment.Current != null)
                 {
-                    if (PowerTabSource?.Current == null) PowerTabSource.Current = new PTSource();
 
-                    PowerTabSource.Current.PowerTabUrl = BuildSource("GI", "InvoicedItemsG", ptParams);
-                });
+                    var paramMap = PowerTabMapping.Select();
+
+                    if (paramMap != null)
+                    {
+                        var ptParams = new Dictionary<string, string>();
+
+                        foreach (GIMappingLine param in paramMap)
+                        {
+                            var cleanName = param.FieldName.Split('.').Last();
+                            ptParams.Add(param.ParamName, cleanName);
+                        }
+
+                        //PowerTabSource.Current = new PTSource();
+                        //PowerTabSource.Current.PowerTabUrl = BuildSource("GI", PowerTabAssignment.Current.DesignID, ptParams);
+
+                        // ptParams.Add("CustomerAccountID", "AcctCD");
+                        //BuildSource("DB", "DB000031", ptParams);
+
+                        Base.RowSelected.AddHandler(Base.PrimaryView, (cache, args) =>
+                        {
+                            if (PowerTabSource?.Current == null) PowerTabSource.Current = new PTSource();
+	                        PowerTabAssignment.Current = PowerTabAssignment.Select(fullName);
+							var giName = ((GIDesign)PXSelectorAttribute.SelectAll<GIMapping.designID>(PowerTabAssignment.Cache, PowerTabAssignment.Current).Find(map => ((GIDesign)map).DesignID == PowerTabAssignment.Current.DesignID))?.Name;
+
+                            PowerTabSource.Current.PowerTabUrl = BuildSource("GI", giName, ptParams);
+                        });
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                PXTrace.WriteError(ex);
             }
         }
     }

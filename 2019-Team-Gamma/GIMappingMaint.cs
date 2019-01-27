@@ -37,7 +37,10 @@ namespace PowerTabs
 				MappingLines.Delete(line);
 			}
 
-			if (e.Row?.DesignID != null)
+            if (Mapping.Current == null) Mapping.Current = e.Row;
+
+
+            if (e.Row?.DesignID != null)
 			{
 				var Params = PXSelect<GIFilter,
 					Where<GIFilter.designID, Equal<Required<GIDesign.designID>>>>.Select(this, e.Row.DesignID);
@@ -72,7 +75,7 @@ namespace PowerTabs
 		protected virtual void _(Events.RowSelected<GIMappingLine> e)
 		{
 			if (e.Row == null) return;
-			if (!String.IsNullOrEmpty(Mapping.Current.ScreenID))
+			if (!String.IsNullOrEmpty(Mapping.Current?.ScreenID))
 			{
 				SetFieldNameList(e.Cache, e.Row);
 			}

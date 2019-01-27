@@ -56,7 +56,7 @@ namespace PowerTabs
 		/// <exclude/>
 		public abstract class fieldName : IBqlField { }
 		[PXDBString(512, InputMask = "", IsUnicode = true)]
-		[PXDefault]
+		[PXDefault(PersistingCheck = PXPersistingCheck.Nothing)]
 		[PXUIField(DisplayName = "Schema Field")]
 		[PXStringList(new string[] { null }, new string[] { "" }, ExclusiveValues = false)]
 		public string FieldName { get; set; }
