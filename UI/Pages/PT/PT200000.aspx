@@ -24,12 +24,16 @@
 		<Levels>
 			<px:PXGridLevel DataMember="MappingLines">
 			    <Columns>
-				<px:PXGridColumn DataField="ParamDisplayName" Width="280" />
-				<px:PXGridColumn DataField="FieldName" Width="280" /></Columns>
+				<px:PXGridColumn DataField="ParamDisplayName" Width="280" ></px:PXGridColumn>
+				<px:PXGridColumn DataField="FieldName" Width="280" ></px:PXGridColumn></Columns>
 			</px:PXGridLevel>
 		</Levels>
-		<AutoSize Container="Window" Enabled="True" MinHeight="150" />
-		<ActionBar >
-		</ActionBar>
+		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
+		<ActionBar >		
+			<Actions>
+				<Refresh Enabled="True" />
+				<AddNew Enabled="False" />
+				<Delete Enabled="False" />
+			</Actions></ActionBar>	
 	</px:PXGrid>
 </asp:Content>
