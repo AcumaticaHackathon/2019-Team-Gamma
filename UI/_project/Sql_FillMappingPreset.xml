@@ -1,1 +1,4 @@
-﻿<Sql TableName="FillMappingPreset" SqlScriptPriority="100" CustomScript="insert into [GIMappingPreset] values (2 , 'AR303000', 'PX.Objects.AR.CustomerMaint')" />
+﻿<Sql TableName="FillMappingPreset" SqlScriptPriority="100" CustomScript="#CDATA">
+    <CDATA name="CustomScript"><![CDATA[IF NOT Exists(select * from GIMappingPreset where ScreenID = 'AR303000')
+insert into GIMappingPreset values (2,'AR303000', 'PX.Objects.AR.CustomerMaint')]]></CDATA>
+</Sql>

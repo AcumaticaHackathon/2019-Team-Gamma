@@ -8,7 +8,7 @@ namespace PowerTabs
 	public class PTSource : IBqlTable
 	{
         [PXString]
-        [PXUIField(Visible = true, DisplayName = "TabUrl")]
+        [PXUIField(Visible = false, DisplayName = "TabUrl")]
         public virtual string PowerTabUrl
         {get; set;}
 

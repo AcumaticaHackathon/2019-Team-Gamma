@@ -1,0 +1,66 @@
+﻿<Page path="~/pages/ar/ar205000.aspx" pageSource="zVhNU+NGED1D1f4HlVJcsYHsHrZEKv7A4AoGl+XA3qix1NgTpBlnZgQmh/z2dOvDGkm2MWy2kj2w9qin+3XP66cee0e/OmM2B+eaiXmCH87d3k+uM2LagKIHAx7h2t+tckW3BlLFUzY7jtM11+kkRl48gzD3XEGyPHeNSsD9dHhwxyIeMgMT+DMBbc7dRxZpcJ2eDHPHnclp+3O73T5merk6DrTrDMUCFDf63KVgD4UBuZtyQ3t+F4Y+hClw1zn65dPhp0MPE8kwTl+X4NxxZRIWjZlZvIWe9nsY/mtPCoNJOMP+uRvg5xMCmi6NIxbAlYxCUPRwuej7rqMSwTAlH9QzukEnB95y9XX8rc8M82WiAkg9hXptqjNTBKf5jDKZUp2cex4SypN2+8h1xorHTL3ecXhB3ywCvQSlpaD8Dyi1GxbjzvG349vZHxAYfdyZHKd249RuxLgwKZoDr8eiaMaCp56MYyZCna4WKP3aU6cPSxDhrbhUPDx35/jXdbJgBKYPhvFIW+AH2Vn6hilzAy+XStLRZym1doei/7npLZBzoIs9WSyfPb+9PzMdcKXNTgBea1MJvFbtnIgALYsB2whxup0Qg+18IL5RBVM3jyq+AhYSC2qkqLCgx5aGS1FhAHbGo0xpQMhHEM9AVSni3EgDQxHygBmpilJQo+nGaicw/JmbV+tB0bUHxbMBhwipQF6LJdfpSoXwffNKHLiRAn314ZElkaHaKBlRmhBalOz1M/KyGQaDVZpjztApxMsIBcI+7mv2KhMzSSKolyg96Z6MklgUaVyzGUQ6r50/yg4IQfj8L4Q3qjHJh3mMp4dq8ORsglkPSIXOi1AzrLjtLSB46spVRpTF01Cn5YKGv9QQwgK85b7cUvE8hZW5CLnJ0fZBB03mWG5yg4qPm4SYYnmhXhDjwOxyVNrsU0A/mQ3frl5uVbSmffZ5Sxatsm9Dnm1vyMvtDYlETD0YNmtgvgI+X+D3s3Z7uao15Za26yVKIYIax0/XHB8aiCvSS0a45tDhYqUTbWSMnjLzRlMUu0iWU9hzFfrjctd7MvCfuCAXuZgPBUJx8ygW9rMCexr9Gp6xxdbfLTjpk2pZxo100i0T+VLPqnT1QxreDlBnbWXlZBdvu50gkIkwJW93OobwWqKYonLvbgfbioanCTwq0ItcgjdF2tjE+CaW+zRyaWd79lqbT8XLCq6bIOjMs4fbalSyDbm3IY23PDwU9HlgQWDoNb/2eZrxeW+ndo0rsD7i4qH4+BBmCvtBUNXTIAHoRHyO5J5Q024C6uzxb1fEoc7fzhgOp0eEkL+sKuF7yGJrCPnSyAonqTorcs1eC0GpGK2aZHj0bpOiy5S1O1uzWebR7OdcCIbjZbieL1t2xPqmYsV27VFHkRyUrjLpGHFRiCNNIPS9rLcVyEqskORWbVBp2UK+XduzQVfTgTtXHJmtcICawJJm9FvRBxpJi0vR3upPc/n3ar6z4UWVBnuP2JfJ6SK5/0Lz/Y39R5rcmHnwYimb1WuMPbnZvjIsZlEnfnuayq329rqPz4bHf0vUK4X4oHzaWe8jdfs73dvlh9TTDjeejJUMQGscvrGirrMO8vOP0sjiOpUt4KAbh/YF/PskFDeFIV6Wd9v0IQLzhh+i6wQCvA2+T7KRiuk73hqLrUOfShlhDbqJMaiZmYqml+f17w+/weuOmhykJ0pvALr5d/Hm7+RX/9rPGFOm5mCyn2eqh9jEYaezCfz/5y3ktUpkJQKSS3zlkGbfcxHKF3cHqNPPFVBna1BluA3Xs38A">
+    <PXDataSource ID="ds" ParentId="phDS_ds" TypeFullName="PX.Web.UI.PXDataSource">
+        <Prop Key="ClientEvents.CommandPerformed" Value="updatePowerTab" />
+    </PXDataSource>
+    <PXFormView ID="frmHeader" ParentId="phF_frmHeader" TypeFullName="PX.Web.UI.PXFormView">
+        <Children Key="Template">
+            <AddItem>
+                <PXFormView TypeFullName="PX.Web.UI.PXFormView">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="PowerTabSource" />
+                    <Prop Key="RenderStyle" Value="Simple" />
+                    <Prop Key="DataMember" Value="PowerTabSource" />
+                    <Children Key="Template">
+                        <AddItem>
+                            <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="ID" Value="PowerTabLayoutRule1" />
+                                <Prop Key="StartColumn" Value="True" />
+                                <Children Key="Controls" />
+                            </PXLayoutRule>
+                        </AddItem>
+                        <AddItem>
+                            <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="DataField" Value="PowerTabUrl" />
+                                <Prop Key="ID" Value="usrPowerTabUrl" />
+                            </PXTextEdit>
+                        </AddItem>
+                        <AddItem>
+                            <PXJavaScript TypeFullName="PX.Web.UI.PXJavaScript">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="ID" Value="PowerTabScript" />
+                                <Prop Key="Script" Value=" function getParams(url) {     const urlHelper = document.createElement('a');     urlHelper.setAttribute('href', window.location.href);     urlHelper = {search: '?startIndex=1&amp;pageSize=10'};          var search = urlHelper.search;          if(search &amp;&amp; search.charAt(0) === '?') {       search = search.slice(1);     }          var values = urlHelper.search.split('&amp;');     var params = {};          values.forEach(function(property) {       var tup = property.split('=');       params[tup[0]] = tup[1];     });          return params; }  function updatePowerTab(ds, context) {    var Result={     CouldNotLoadUrl:1,     UrlLoadedButContentCannotBeAccessed:2,     UrlLoadedContentCanBeAccessed:3   };    var commands = [&quot;ReloadPage&quot;, &quot;Save&quot;, &quot;Cancel&quot;, &quot;Insert&quot;, &quot;First&quot;, &quot;Previous&quot;, &quot;Next&quot;, &quot;Last&quot;];   if (commands.indexOf(context.command) &gt;= 0) {       var powerTabUrl = px_alls[&quot;usrPowerTabUrl&quot;];       var powerTabPanel = px_alls[&quot;powerTabPanel&quot;];       if (powerTabUrl || powerTabPanel) {           var url = powerTabUrl.getValue();           var ifr = powerTabPanel.elemContent;            ifr.onload = function() {               var result;               try {                   var loadedUrl=(ifr.contentWindow||ifr.contentDocument).location.href;                   var doc=ifr.contentDocument;                                      var className = '';                   var type = '';                   var params = {};                    if (loadedUrl.includes('DS')) {                     className = 'ctl00_phDS_form';                     type = 'dashboard';                     params = getParams(loadedUrl);                   } else {                     className = 'phF';                     type = 'GI';                   }                   console.log(url+&quot; loaded in an iframe, it's a &quot;+type+&quot;, looking for &quot;+className);                    var elements = doc.getElementsByClassName(className);                                      if (elements &amp;&amp; elements[0]) {                     var parameterTable = elements[0];                     parameterTable.style.display = 'none';                     console.log(&quot;Got element from iframe, parameters are now hidden&quot;);                   } else {                     console.log(&quot;Couldn't find parameter table class&quot;);                   }                                      result=Result.UrlLoadedContentCanBeAccessed;               } catch(ex) {                   result=Result.UrlLoadedButContentCannotBeAccessed;                   alt=ex;                   console.log(url+' loaded in an iframe, but content is innaccessible ('+alt+')');               }           };                      powerTabPanel.setPageUrl(url);           powerTabPanel.repaint();       }   } }" />
+                                <Prop Key="IsStartupScript" Value="True" />
+                                <Children Key="Controls" />
+                            </PXJavaScript>
+                        </AddItem>
+                    </Children>
+                </PXFormView>
+            </AddItem>
+        </Children>
+    </PXFormView>
+    <PXTab ID="tab" ParentId="phG_tab" TypeFullName="PX.Web.UI.PXTab">
+        <Children Key="Items">
+            <AddItem>
+                <PXTabItem TypeFullName="PX.Web.UI.PXTabItem">
+                    <Prop Key="Text" Value="PowerTab" />
+                    <Prop Key="BindingContext" Value="BAccount" />
+                    <Children Key="Template">
+                        <AddItem>
+                            <PXSmartPanel TypeFullName="PX.Web.UI.PXSmartPanel">
+                                <Prop Key="Virtual:ApplyStylesheetSkin" />
+                                <Prop Key="ID" Value="powerTabPanel" />
+                                <Prop Key="SkinID" Value="Frame" />
+                                <Prop Key="LoadOnDemand" Value="true" />
+                                <Prop Key="RenderIFrame" Value="True" />
+                                <Prop Key="AutoSize.Enabled" Value="true" />
+                                <Children Key="Controls" />
+                            </PXSmartPanel>
+                        </AddItem>
+                    </Children>
+                </PXTabItem>
+            </AddItem>
+        </Children>
+    </PXTab>
+</Page>

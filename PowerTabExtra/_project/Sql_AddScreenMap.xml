@@ -1,0 +1,7 @@
+﻿<Sql TableName="AddScreenMap" CustomScript="#CDATA">
+    <CDATA name="CustomScript"><![CDATA[IF NOT Exists(select * from GIMappingPreset where ScreenID = 'AR205000')
+insert into GIMappingPreset values (2,'AR205000', 'PX.Objects.AR.SalesPersonMaint')
+
+IF NOT Exists(select * from GIMappingPreset where ScreenID = 'IN202500')
+insert into GIMappingPreset values (2,'IN202500', 'PX.Objects.IN.InventoryItemMaint')]]></CDATA>
+</Sql>
